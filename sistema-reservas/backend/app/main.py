@@ -46,6 +46,7 @@ default_origins = [
     "http://127.0.0.1:3000",
     "http://localhost:3001",
     "http://127.0.0.1:3001",
+    "https://sistema-reserva-frontend.netlify.app",
 ]
 
 env_origins = os.getenv("BACKEND_CORS_ORIGINS")
