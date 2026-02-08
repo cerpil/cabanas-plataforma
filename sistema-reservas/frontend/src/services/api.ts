@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Cliente, Cabana, Reserva, Mensagem, ReservaCalendario, Stats } from '../types';
 
 const api = axios.create({
-  baseURL: 'https://7a66ca5f5bf0ad88-216-234-209-114.serveousercontent.com',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
 });
 
 // --- CLIENTES ---
