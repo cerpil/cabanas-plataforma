@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SchemaOrg from "@/components/SchemaOrg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,8 +14,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cabanas na Mata | Refúgio na Serra da Moeda",
-  description: "Reserve sua estadia no Cabanas na Mata. Chalés exclusivos, conforto e contato direto com a natureza em Minas Gerais.",
+  title: "Cabanas na Mata | Refúgio e Hospedagem na Serra da Moeda",
+  description: "Descubra o refúgio perfeito em Minas Gerais. Cabanas exclusivas com vista para a Serra da Moeda, conforto moderno e imersão total na natureza.",
+  keywords: ["cabanas serra da moeda", "hospedagem minas gerais", "chalés românticos", "aluguel temporada serra da moeda", "cabanas na mata", "pousada serra da moeda"],
+  authors: [{ name: "Cabanas na Mata" }],
+  openGraph: {
+    title: "Cabanas na Mata | Refúgio na Serra da Moeda",
+    description: "Cabanas exclusivas integradas à natureza. O destino ideal para desconectar e relaxar.",
+    url: "https://www.cabanasnamata.com.br",
+    siteName: "Cabanas na Mata",
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cabanas na Mata | Refúgio na Serra da Moeda",
+    description: "Experiência única de hospedagem integrada à natureza em Minas Gerais.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -23,10 +43,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
+        <SchemaOrg />
         {children}
         <a 
           href="https://instagram.com/cabanasnamata" 
