@@ -8,13 +8,17 @@ import os
 import json
 from .routers import clientes, reservas, mensagens, cabanas, auth, usuarios, calendar, public
 from .database import engine, Base
-from init_db import init_db
+from .init_db import init_db
+from contextlib import asynccontextmanager
 
-# Inicializa o banco de dados e cria o usuário admin se necessário
-try:
-    init_db()
-except Exception as e:
-    print(f"Erro ao inicializar banco: {e}")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Inicializa o banco de dados e cria o usuário admin se necessário
+    try:
+        init_db()
+    except Exception as e:
+        print(f"Erro ao inicializar banco: {e}")
+    yield
 
 # Configuração do Rate Limiter
 limiter = Limiter(key_func=get_remote_address)
@@ -22,7 +26,8 @@ limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="Sistema de Reservas - Cabanas na Mata",
     description="API para gestão interna de reservas, clientes e disponibilidade.",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Adiciona o limiter ao state do app

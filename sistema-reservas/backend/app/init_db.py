@@ -1,6 +1,6 @@
-from app.database import engine, Base, SessionLocal
-from app.models.models import Cabana, User, Cliente, Reserva, Mensagem
-from app.utils.auth import get_password_hash
+from .database import engine, Base, SessionLocal
+from .models.models import Cabana, User, Cliente, Reserva, Mensagem
+from .utils.auth import get_password_hash
 from datetime import date, timedelta, datetime
 import random
 
