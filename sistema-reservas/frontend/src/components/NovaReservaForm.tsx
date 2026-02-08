@@ -16,7 +16,8 @@ import { Modal } from './ui/Modal';
 import { ClienteForm } from './ClienteForm';
 
 const reservaSchema = z.object({
-  cliente_id: z.number({ required_error: 'Selecione um cliente' }),  cabana_id: z.number({ required_error: 'Selecione uma cabana' }),
+  cliente_id: z.coerce.number({ required_error: 'Selecione um cliente' }).min(1, 'Selecione um cliente'),
+  cabana_id: z.coerce.number({ required_error: 'Selecione uma cabana' }).min(1, 'Selecione uma cabana'),
   data_checkin: z.string().min(1, 'Data de entrada é obrigatória'),
   data_checkout: z.string().min(1, 'Data de saída é obrigatória'),
   forma_pagamento: z.string().min(1, 'Selecione a forma de pagamento'),
