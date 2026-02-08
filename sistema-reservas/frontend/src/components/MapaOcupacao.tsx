@@ -12,20 +12,7 @@ import {
 } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
-
-interface Reserva {
-  id: number;
-  data_checkin: string;
-  data_checkout: string;
-  cliente: { nome: string };
-  cabana_id: number;
-  status: string;
-}
-
-interface Cabana {
-  id: number;
-  nome: string;
-}
+import { Reserva, Cabana } from '../types';
 
 interface MapaOcupacaoProps {
   reservas: Reserva[];
@@ -152,7 +139,7 @@ export const MapaOcupacao: React.FC<MapaOcupacaoProps> = ({ reservas, cabanas, o
                               marginLeft: isStart ? '0' : '0',
                             }}
                           >
-                            <span className={isStart ? 'ml-0' : ''}>{reserva.cliente.nome}</span>
+                            <span className={isStart ? 'ml-0' : ''}>{reserva.cliente?.nome || 'N/A'}</span>
                           </div>
                         </td>
                       );
