@@ -8,9 +8,13 @@ import os
 import json
 from .routers import clientes, reservas, mensagens, cabanas, auth, usuarios, calendar, public
 from .database import engine, Base
+from init_db import init_db
 
-# Cria as tabelas se não existirem (REMOVIDO: gerenciado pelo Alembic)
-# Base.metadata.create_all(bind=engine)
+# Inicializa o banco de dados e cria o usuário admin se necessário
+try:
+    init_db()
+except Exception as e:
+    print(f"Erro ao inicializar banco: {e}")
 
 # Configuração do Rate Limiter
 limiter = Limiter(key_func=get_remote_address)
