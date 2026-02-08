@@ -51,9 +51,15 @@ export const NovaReservaForm: React.FC<NovaReservaFormProps> = ({ onSuccess, ini
   });
 
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<ReservaFormData>({
-    resolver: zodResolver(reservaSchema),
+    resolver: zodResolver(reservaSchema) as any,
     defaultValues: {
       data_checkin: initialDate || '',
+      data_checkout: '',
+      cliente_id: undefined,
+      cabana_id: undefined,
+      forma_pagamento: '',
+      valor_total: 0,
+      valor_sinal: 0,
       status: 'pendente',
     },
   });
