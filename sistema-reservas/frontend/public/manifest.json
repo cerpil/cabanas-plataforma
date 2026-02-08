@@ -1,0 +1,23 @@
+{
+  "name": "Cabanas Gestão",
+  "short_name": "Cabanas",
+  "description": "Sistema de gestão de reservas - Cabanas na Mata",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0a09",
+  "theme_color": "#0c0a09",
+  "icons": [
+    {
+      "src": "/assets/branding/logo-white.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/branding/logo-white.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
