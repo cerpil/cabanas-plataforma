@@ -26,6 +26,9 @@ export interface Reserva {
   data_checkout: string;
   forma_pagamento?: string;
   valor_total?: number;
+  valor_sinal: number;
+  pago_sinal: boolean;
+  pago_total: boolean;
   status: ReservaStatus;
   origem: 'local' | 'airbnb';
   observacoes?: string;
