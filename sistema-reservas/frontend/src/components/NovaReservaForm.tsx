@@ -23,6 +23,7 @@ const reservaSchema = z.object({
   forma_pagamento: z.string().min(1, 'Selecione a forma de pagamento'),
   valor_total: z.coerce.number().min(0, 'O valor não pode ser negativo'),
   valor_sinal: z.coerce.number().min(0, 'O sinal não pode ser negativo'),
+  status: z.string().default('pendente'),
   observacoes: z.string().optional(),
 });
 
