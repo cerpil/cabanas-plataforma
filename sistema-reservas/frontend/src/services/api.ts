@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Cliente, Cabana, Reserva, Mensagem, ReservaCalendario, Stats } from '../types';
+import { Cliente, Cabana, Reserva, Mensagem, ReservaCalendario, Stats, AuditLog } from '../types';
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000',
