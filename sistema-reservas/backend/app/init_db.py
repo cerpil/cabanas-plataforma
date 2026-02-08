@@ -10,8 +10,9 @@ def init_db():
     
     db = SessionLocal()
     
-    # Criar Usuário Admin se não existir
-    if db.query(User).count() == 0:
+    # Criar ou Atualizar Usuário Admin
+    admin = db.query(User).filter(User.username == "admin").first()
+    if not admin:
         admin = User(
             username="admin",
             hashed_password=get_password_hash("admin123"),
@@ -20,8 +21,13 @@ def init_db():
             is_active=True
         )
         db.add(admin)
-        db.commit()
         print("Usuário Admin criado: admin / admin123")
+    else:
+        admin.hashed_password = get_password_hash("admin123")
+        admin.is_active = True
+        print("Usuário Admin resetado para senha padrão.")
+    
+    db.commit()
 
     # Cadastrar Cabanas
     if db.query(Cabana).count() == 0:
